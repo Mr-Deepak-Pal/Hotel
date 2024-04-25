@@ -1,0 +1,68 @@
+{% load static %}
+<!doctype html>
+{% load hosts %}
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" 
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>Login</title>
+    <link rel="stylesheet" href="">
+    <style>
+        #warning{
+            display:none;
+        }
+
+        .move_to_signup{
+          text-decoration: none;
+          font-style: italic;
+          font-weight: bold;
+        }
+    </style>
+    </style>
+  </head>
+
+  <body class="text-center">
+    <main class="form-signin needs-validation">
+      <form action="" method="POST">
+        {%csrf_token%}
+        <h1 class="h3 mb-3 fw-normal"><img src=""><br><span><b>Login</b></span></h1>
+        <div class="form-floating mt-4">
+          <input type="text" name="username" class="form-control" id="password" placeholder="Enter Your Username" autocomplete="on">
+          <label for="username"><b>Enter Username </b></label>
+        </div>
+        <div class="form-floating mt-4">
+          <input type="password" name="password" class="form-control" id="password" placeholder="Enter Your Password">
+          <label for="password"><b>Enter Password </b></label>
+        </div>
+
+        <button class="w-100 btn btn-lg btn-primary mt-3" id="loginBtn" type="submit">Login</button>
+        <br> <br>
+        <p class="alert alert-danger" id="warning"></p>
+
+        {% for message in messages %}
+        <h2 class=" animate__animated animate__backInLeft " style="color: red; font-size: 15px;" > {{message}} </h2>
+        {% endfor %}
+       </form>
+
+      <div class="footer_registerform"><a href="{% host_url 'signup' host 'authentication' %}" class="move_to_signup">
+          <p>Go To Signup...</p>
+        </a>
+      </div>
+
+    </main>
+    <!-- <script src="login.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- <script defer src="login.js"></script>     -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
+    </script>
+
+
+  </body>
+
+</html>
